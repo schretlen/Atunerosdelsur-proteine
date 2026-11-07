@@ -1,0 +1,82 @@
+/* =========================
+   RESPONSIVE
+   Desktop-nav breakpoint is 1140px: below it the header
+   switches to the mobile menu so the bar can never crowd.
+========================= */
+
+/* ---- Large desktop ---- */
+@media (min-width: 1600px) {
+  :root { --gutter: 40px; }
+}
+
+/* ---- Laptop & below: mobile navigation ---- */
+@media (max-width: 1139px) {
+  .nav { display: none; }
+  .nav-toggle { display: flex; }
+  .hero__content { padding-top: 140px; }
+}
+
+/* ---- Tablet ---- */
+@media (max-width: 900px) {
+  :root { --section-y: clamp(64px, 9vw, 110px); }
+
+  .section-head { gap: 22px; margin-bottom: 34px; }
+  .split { gap: 30px; }
+
+  /* Stack product rows image-first, regardless of row order */
+  .product { gap: 0; }
+  .product--reverse .product__media { order: 0; }
+  .product__media { min-height: clamp(240px, 52vw, 380px); }
+
+  /* Slider panels sit under their image on narrow screens */
+  .slide__media { min-height: clamp(220px, 50vw, 360px); }
+  .slide__panel { padding: 30px 24px 34px; }
+
+  .hero { min-height: 92svh; }
+  .hero__foot { padding-top: 44px; }
+}
+
+/* ---- Mobile ---- */
+@media (max-width: 640px) {
+  :root { --gutter: 20px; }
+
+  h1 { font-size: clamp(34px, 11vw, 54px); }
+  h2 { font-size: clamp(28px, 9vw, 42px); }
+  h3 { font-size: clamp(22px, 7vw, 30px); }
+
+  .hero__content { padding-top: 120px; }
+  .hero__actions .btn { flex: 1 1 100%; }
+
+  .slider-controls { gap: 14px 16px; }
+  .slider-dots { gap: 10px; }
+  .slider-dot { min-width: 54px; font-size: 10px; }
+  .slider-arrow { width: 48px; height: 48px; }
+
+  .product__body,
+  .tile { padding: 26px 20px; }
+
+  .product__lists { gap: 20px; }
+  .form-card { padding: 24px 20px; }
+
+  /* Stack the quality facts on narrow screens */
+  .fact-grid { grid-template-columns: 1fr; }
+  .fact { min-height: 0; }
+  .quality__media img { min-height: clamp(220px, 56vw, 380px); }
+
+  .cert-strip__inner { gap: 10px 22px; font-size: 10.5px; }
+  .site-footer__base { font-size: 11px; }
+}
+
+/* ---- Touch devices: no hover-only affordances ---- */
+@media (hover: none) {
+  .product__media:hover img { transform: none; }
+  .tile:hover { background: var(--white); }
+}
+
+/* ---- Print ---- */
+@media print {
+  .site-header, .slider-controls, .hero__foot, .nav-toggle { display: none !important; }
+  body { background: #fff; color: #000; }
+  .slider__track { transform: none !important; }
+  .slide { page-break-inside: avoid; }
+}

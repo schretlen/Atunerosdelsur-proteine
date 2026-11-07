@@ -1,0 +1,332 @@
+/* =========================
+   BUTTONS
+========================= */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 30px;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: filter .25s ease, background .25s ease, color .25s ease, border-color .25s ease, transform .25s ease;
+}
+
+/* Primary — orange gradient, used for every main call to action */
+.btn--primary {
+  background: linear-gradient(135deg, var(--orange) 0%, var(--orange-dark) 100%);
+  color: #fff;
+}
+.btn--primary:hover { filter: brightness(1.12); color: #fff; }
+
+/* Light — white block, used on dark grounds */
+.btn--light { background: #fff; color: var(--ink); }
+.btn--light:hover { background: var(--orange-light); color: var(--ink); transform: translateY(-2px); }
+
+/* Ghost — outline on dark grounds */
+.btn--ghost { border-color: rgba(255,255,255,.4); color: #fff; }
+.btn--ghost:hover { background: rgba(255,255,255,.12); color: #fff; }
+
+/* Outline — outline on light grounds */
+.btn--outline { border-color: var(--line-strong); color: var(--ink); }
+.btn--outline:hover { border-color: var(--ink); }
+
+/* Compact variant for the header */
+.btn--sm { padding: 12px 22px; letter-spacing: .03em; }
+
+/* Text link with a rule under it */
+.link-underline {
+  align-self: flex-start;
+  font-size: 12.5px;
+  font-weight: 600;
+  letter-spacing: .04em;
+  color: var(--ink);
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 7px;
+}
+.link-underline:hover { color: var(--orange); border-color: var(--orange); }
+
+/* =========================
+   SLIDER (company / production / applications)
+========================= */
+.slider { overflow: hidden; margin-top: clamp(36px, 4.6vw, 68px); }
+.slider__track {
+  display: flex;
+  width: 100%;
+  transition: transform .85s cubic-bezier(.16,1,.3,1);
+}
+.slide {
+  flex: 0 0 100%;
+  min-width: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+.slide__media {
+  flex: 1 1 min(100%, 500px);
+  min-width: 0;
+  min-height: clamp(280px, 36vw, 500px);
+  position: relative;
+  background: var(--paper);
+}
+.slide__media img { width: 100%; height: 100%; object-fit: cover; }
+.slide__panel {
+  flex: 1 1 min(100%, 400px);
+  min-width: 0;
+  background: linear-gradient(150deg, var(--ink-panel) 0%, var(--ink) 62%);
+  color: #fff;
+  padding: clamp(30px, 4vw, 66px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.slide__index { font-family: var(--font-mono); font-size: 11px; letter-spacing: .2em; color: var(--orange-light); }
+.slide__index--xl { font-size: clamp(28px, 3.4vw, 50px); line-height: 1; color: rgba(255,255,255,.2); letter-spacing: 0; }
+.slide__panel h3 { margin-top: 16px; }
+.slide__text { margin-top: 16px; max-width: 44ch; font-size: 16.5px; line-height: 1.75; color: rgba(255,255,255,.72); }
+.slide__meta {
+  margin-top: 26px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255,255,255,.16);
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  line-height: 1.8;
+  color: rgba(255,255,255,.55);
+}
+.slide__head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+
+/* Slider controls */
+.slider-controls {
+  max-width: var(--shell);
+  margin: clamp(22px, 2.6vw, 34px) auto 0;
+  padding: 0 var(--gutter);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 18px 24px;
+}
+.slider-arrows { display: flex; gap: 8px; }
+.slider-arrow {
+  width: 52px;
+  height: 52px;
+  background: transparent;
+  border: 1px solid var(--line);
+  color: var(--ink);
+  font-size: 17px;
+  cursor: pointer;
+  transition: border-color .25s ease;
+}
+.slider-arrow:hover { border-color: var(--ink); }
+
+.slider-dots { display: flex; flex-wrap: wrap; gap: 16px; }
+.slider-dot {
+  background: transparent;
+  border: 0;
+  padding: 8px 0;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  min-width: 72px;
+  text-align: left;
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .14em;
+  color: var(--text);
+}
+.slider-dot::after {
+  content: "";
+  display: block;
+  height: 2px;
+  background: var(--line);
+  transition: background .3s ease;
+}
+.slider-dot.is-active { color: var(--orange); }
+.slider-dot.is-active::after { background: var(--orange); }
+
+/* Hero slide markers */
+.hero-dots { display: flex; flex-wrap: wrap; gap: 10px; }
+.hero-dot {
+  width: 46px;
+  height: 3px;
+  padding: 0;
+  border: 0;
+  cursor: pointer;
+  background: rgba(255,255,255,.35);
+  transition: background .3s ease;
+}
+.hero-dot.is-active { background: var(--orange-light); }
+
+/* =========================
+   CARDS & TILES
+========================= */
+.tile-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+}
+.tile {
+  background: var(--white);
+  padding: clamp(28px, 3vw, 44px);
+  display: flex;
+  flex-direction: column;
+  min-height: clamp(250px, 24vw, 320px);
+  transition: background .3s ease;
+}
+.tile:hover { background: var(--paper-soft); }
+.tile__head { display: flex; align-items: baseline; justify-content: space-between; gap: 14px; }
+.tile__index { font-family: var(--font-mono); font-size: 11px; letter-spacing: .18em; color: var(--orange); }
+.tile__scope { font-family: var(--font-mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--text); }
+.tile h3 { margin-top: 26px; font-size: clamp(24px, 2.6vw, 34px); letter-spacing: -.04em; line-height: 1.05; }
+.tile__text { margin-top: 14px; font-size: 15.5px; line-height: 1.72; color: var(--text); }
+.tile__foot { margin-top: auto; padding-top: 24px; font-family: var(--font-mono); font-size: 11px; letter-spacing: .14em; color: var(--text); }
+
+/* Quality mini-grid */
+.fact-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);   /* always a symmetrical 2×2 block */
+  grid-auto-rows: 1fr;
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: 36px;
+}
+.fact {
+  background: var(--paper);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  min-height: 136px;
+}
+.fact__title { display: block; font-size: 15.5px; font-weight: 600; color: var(--ink); }
+.fact__text  { display: block; margin-top: 6px; font-size: 14.5px; line-height: 1.65; color: var(--text); }
+
+/* Product spec cells */
+.spec-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin-top: clamp(26px, 3vw, 38px);
+}
+.spec {
+  background: var(--white);
+  padding: 18px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.spec__value {
+  font-family: var(--font-display);
+  font-size: clamp(19px, 2.1vw, 27px);
+  font-weight: 800;
+  letter-spacing: -.035em;
+  line-height: 1;
+  color: var(--ink);
+}
+.spec__key { font-family: var(--font-mono); font-size: 10px; letter-spacing: .16em; text-transform: uppercase; color: var(--text); }
+
+/* Simple hairline list (applications, supply) */
+.rule-list { display: flex; flex-direction: column; }
+.rule-list__label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--text);
+  margin-bottom: 12px;
+}
+.rule-list__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 15px;
+  color: var(--ink);
+}
+.rule-list__item span { font-family: var(--font-mono); font-size: 13px; color: var(--text); }
+
+/* =========================
+   IMAGE PLACEHOLDERS
+   Striped slots marking photography still to be supplied.
+========================= */
+.image-slot {
+  background-color: var(--paper);
+  background-image: repeating-linear-gradient(135deg, rgba(6,42,74,.08) 0 10px, transparent 10px 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 26px;
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-dim);
+  line-height: 1.9;
+}
+.image-slot--dark {
+  background-color: var(--ink-panel);
+  background-image: repeating-linear-gradient(135deg, rgba(255,255,255,.05) 0 10px, transparent 10px 20px);
+  color: rgba(255,255,255,.6);
+}
+
+/* =========================
+   FORMS
+========================= */
+.form-card {
+  flex: 1 1 min(100%, 380px);
+  min-width: 0;
+  background: var(--ink-panel);
+  border: 1px solid rgba(255,255,255,.14);
+  padding: clamp(28px, 3.4vw, 50px);
+}
+.form { display: grid; gap: 20px; }
+.form__row { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 20px; }
+.field { display: flex; flex-direction: column; gap: 9px; }
+.field > span {
+  font-family: var(--font-mono);
+  font-size: 10.5px;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.62);
+}
+.field input,
+.field textarea,
+.field select {
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid rgba(255,255,255,.28);
+  color: #fff;
+  font-size: 16px;
+  padding: 11px 0;
+  outline: none;
+  transition: border-color .25s ease;
+}
+.field select { background: var(--ink-panel); }
+.field textarea { resize: vertical; }
+.field input:focus,
+.field textarea:focus,
+.field select:focus { border-color: var(--orange-light); }
+.field ::placeholder { color: rgba(255,255,255,.45); }
+
+.form-success { display: none; flex-direction: column; gap: 16px; padding: 44px 0; animation: fadeIn .3s ease both; }
+.form-success.is-visible { display: flex; }
+.form-success__title { font-family: var(--font-display); font-size: 36px; font-weight: 800; letter-spacing: -.04em; line-height: 1.05; }
+.form.is-hidden { display: none; }
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+.reveal {
+  animation: revealUp .01s linear both;
+  animation-timeline: view();
+  animation-range: entry 4% cover 20%;
+}
